@@ -30,7 +30,7 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | trayer        | systray               |
 | xfe           | file manager          |
 | xmobar        | status bar            |
-| xmonad        | tiling Window Manager |
+| xmonad        | tiling window manager |
 # Keybindings
 # Install
 1. Clone the repository:
