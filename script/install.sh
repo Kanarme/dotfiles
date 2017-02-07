@@ -1,5 +1,7 @@
 #!/bin/sh
 #Ascii Standard
+RED='\033[0;31m'
+NC='\033[0m' # No Color
 cat <<"EOF"
 
 ---------------------------------------------------------------------------------
@@ -10,6 +12,13 @@ cat <<"EOF"
  |___|_| |_|___/\__\__,_|_|_|_|_| |_|\__, | |____/ \___/ \__|_| |_|_|\___||___/
                                      |___/
 ---------------------------------------------------------------------------------
+EOF
+echo -e "${RED}Attention:${NC} Input is not checked${RED}!!!${NC}"
+echo "Example (/home/user)"
+read -p "Enter the path to Home: " HOMEDIR
+echo $HOMEDIR
+
+cat <<"EOF"
 --------------------------
   _   _ _
  | \ | (_)_  _____  ___
@@ -28,11 +37,12 @@ do
                     echo "Installing Dotfiels for P50"
                     echo "---------------------------"
                     echo "Link Nixos Dotfiles"
-                    ln $HOME/.dotfiles/nixos/p50/configuration.nix /etc/nixos/configuration.nix
-                    mkdir $HOME/.nixpkgs
-                    ln $HOME/.dotfiles/nixos/p50/config.nix $HOME/.nixpkgs/config.nix
+                    ln $HOMEDIR/.dotfiles/nixos/p50/configuration.nix /etc/nixos/configuration.nix
+                    mkdir $HOMEDIR/.nixpkgs
+                    ln $HOMEDIR/.dotfiles/nixos/p50/config.nix $HOMEDIR/.nixpkgs/config.nix
                     echo "---------------------------"
                     echo "---------------------------"
+                    nixos-rebuild switch
                     break
                     ;;
                 "Quit")
@@ -56,8 +66,8 @@ read -n1 -p "Install Xmonad Dotfiles [y,n]" doit
 case $doit in
     y|Y)
         echo "Link Xmonad Dotfiles"
-        mkdir $HOME/.xmonad
-        ln $HOME/.dotfiles/xmonad/xmonad.hs $HOME/.xmonad/xmonad.hs
+        mkdir $HOMEDIR/.xmonad
+        ln $HOMEDIR/.dotfiles/xmonad/xmonad.hs $HOMEDIR/.xmonad/xmonad.hs
 
         PS3='Please select for which Device you want to install Xmobar: '
         options=("P50" "Quit")
@@ -67,8 +77,8 @@ case $doit in
                 "P50")
                     echo "Installing Dotfiels for P50"
                     echo "------------ Spacemacs ---------------"
-                    perl -p -i.bak -e "~s|/home/user|"$HOME"|" $HOME/.dotfiles/xmonad/P50_xmobarrc
-                    ln $HOME/.dotfiles/xmonad/P50_xmobarrc $HOME/.xmonad/xmobarrc
+                    perl -p -i.bak -e "~s|/home/user|"$HOMEDIR"|" $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc
+                    ln $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc $HOMEDIR/.xmonad/xmobarrc
                     break
                     ;;
                 "Quit")
@@ -104,7 +114,7 @@ case $doit in
         rm ~/.emacs
         git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
         echo "Link Spacemacs Configfile"
-        ln $HOME/.dotfiles/.spacemacs ~/.spacemacs
+        ln $HOMEDIR/.dotfiles/.spacemacs ~/.spacemacs
         echo -e
         ;;
     n|N)
