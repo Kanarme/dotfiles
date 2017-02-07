@@ -15,7 +15,22 @@ My Xmonad Config is heavly inspired by Shotaro Fujimoto.
 Highly recommended to take a look at his Github page <https://github.com/ssh0/dotfiles>
 # Screenshot
 ![screenshot0.jpg](./screenshots/screenshot0.jpg)
-# Programms
+# Programs
+| Programm      | Category              |
+| ------------- | :-------------:       |
+| beancount     | ledger                |
+| emacs         | text editor           |
+| mirage        | image viewer          |
+| nm applet     | network manager       |
+| qutebrowser   | browser vim-like      |
+| redshift      | color temperature     |
+| rofi          | run dialog / dmenu    |
+| roxterm       | terminal emulator     |
+| shuttr        | screenshot tool       |
+| trayer        | systray               |
+| xfe           | file manager          |
+| xmobar        | status bar            |
+| xmonad        | tiling Window Manager |
 # Keybindings
 # Install
 1. Clone the repository:
