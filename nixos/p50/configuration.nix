@@ -76,7 +76,7 @@ aspellDicts.en
          # Graphic
 	 # videoDrivers = [ "nouveau" ];
          
-		 # keyboard
+	 # keyboard
          enable = true;
          layout = "us";
 	 xkbOptions = "eurosign:e";
