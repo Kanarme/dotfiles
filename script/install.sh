@@ -17,7 +17,7 @@ echo -e "${RED}Attention:${NC} Input is not checked${RED}!!!${NC}"
 echo "Example (/home/user)"
 read -p "Enter the path to Home: " HOMEDIR
 echo $HOMEDIR
-
+cp .dotfiles/ $HOMEDIR/
 cat <<"EOF"
 --------------------------
   _   _ _
