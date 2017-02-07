@@ -1,10 +1,23 @@
 # dotfiles
+**Table of Contents**
+
+- [Introduction](#introduction)
+- [Screenshot](#screenshot)
+- [Programms](#programms)
+- [Keybindings](#keybindings)
+- [Install](#install)
+- [License](#license)
+
+# Introduction
+
 This repository contains my dotfiles.
 My Xmonad Config is heavly inspired by Shotaro Fujimoto.
 Highly recommended to take a look at his Github page <https://github.com/ssh0/dotfiles>
 # Screenshot
 ![screenshot0.jpg](./screenshots/screenshot0.jpg)
-# How to Install
+# Programms
+# Keybindings
+# Install
 1. Clone the repository:
 ```sh
 git clone https://github.com/Kanarme/dotfiles.git
