@@ -17,7 +17,11 @@ echo -e "${RED}Attention:${NC} Input is not checked${RED}!!!${NC}"
 echo "Example (/home/user)"
 read -p "Enter the path to Home: " HOMEDIR
 echo $HOMEDIR
-cp .dotfiles/ $HOMEDIR/
+if [ "$EUID" -e 0 ]
+then mkdir $HOMEDIR
+     exit
+fi
+mv dotfiles/ $HOMEDIR/.dotfiles
 cat <<"EOF"
 --------------------------
   _   _ _
@@ -33,16 +37,21 @@ options=("P50" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
-                "P50")
+                 "P50")
+                    if [ "$EUID" -ne 0 ]
+                       then echo "If you want to install Nixos, please run as root"
+                       exit
+                    fi
                     echo "Installing Dotfiels for P50"
                     echo "---------------------------"
-                    echo "Link Nixos Dotfiles"
+                    echo "link configuration.nix to /etc/nixos/"
                     ln $HOMEDIR/.dotfiles/nixos/p50/configuration.nix /etc/nixos/configuration.nix
                     mkdir $HOMEDIR/.nixpkgs
+                    echo "link config.nix to ~/.nixpkgs/config.nix"
                     ln $HOMEDIR/.dotfiles/nixos/p50/config.nix $HOMEDIR/.nixpkgs/config.nix
+                    chown -R root:root /etc/nixos
                     echo "---------------------------"
                     echo "---------------------------"
-                    nixos-rebuild switch
                     break
                     ;;
                 "Quit")
@@ -75,14 +84,14 @@ case $doit in
         do
             case $opt in
                 "P50")
-                    echo "Installing Dotfiels for P50"
-                    echo "------------ Spacemacs ---------------"
+                    echo "Installing dotfiels for P50"
+                    echo "------------ Xmonad ---------------"
                     perl -p -i.bak -e "~s|/home/user|"$HOMEDIR"|" $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc
                     ln $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc $HOMEDIR/.xmonad/xmobarrc
                     break
                     ;;
                 "Quit")
-                    echo "Without Xmobar"
+                    echo "Without xmobar"
                     break
                     ;;
                 *) echo invalid option;;
@@ -113,7 +122,7 @@ case $doit in
         echo "Installing Spacemacs"
         rm ~/.emacs
         git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-        echo "Link Spacemacs Configfile"
+        echo "link spacemacs configfile to ~/.spacemacs"
         ln $HOMEDIR/.dotfiles/.spacemacs ~/.spacemacs
         echo -e
         ;;
@@ -124,3 +133,6 @@ case $doit in
         ;;
   *) echo invalid option ;;
 esac
+echo -e "${RED}Attention:${NC} Installation completed ${RED}!!!${NC}"
+echo -e "${RED}Attention:${NC} You may need to change the rights and owner of the home directory ${RED}!!!${NC}"
+echo -e "chown -R user:users /home/user"
