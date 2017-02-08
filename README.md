@@ -35,6 +35,7 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 # Install
 **You have to look at the configuration and adjust it for your needs. If you have questions, feel free to ask.**  
 The script will ask you for your home direcoty and move the dofiles there. Following it will ask you which files you want to hardlink.  
+  
 1. Clone the repository:
 ```sh
 git clone https://github.com/Kanarme/dotfiles.git
@@ -47,7 +48,8 @@ If you want to install Nixos, you have to run the script as root.
 ```
 Note: P50 is my lenovo notebook.
 Notebook specific icons and scripts are transferred, for example, battery indicator, wifi indicator and scripts to regulate the brightness.  
-You may need to change the rights and owner of the home directory
+
+3. You may need to change the rights and owner of the home directory
 ```sh
 chown -R user:users /home/user
 ```
