@@ -32,8 +32,8 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | xmobar        | status bar            |
 | xmonad        | tiling window manager |
 # Keybindings
-Every key must be pressed in combination with the super/win key.  
-For a deeper insight, check out the xmonad.hs file.
+Every key must be pressed in combination with the **super/win key**.  
+For a deeper insight, check out the xmonad.hs file.  
 | Key             | Description                                        |
 | -------------   | :-------------:                                    |
 | d               | run dialog to start application                    |
