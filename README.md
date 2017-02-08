@@ -53,7 +53,6 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | z               | resize current window downward                     |
 | shift_;         | switch arrangement                                 |
 | -               | switch arrangement                                 |
-| arrow keys      | switch                                             |
 | g               | search a window and focus into the window          |
 | b               | search a window and bring to the current workspace |
 | e               | spawn xfe                                          |
