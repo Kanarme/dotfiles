@@ -16,7 +16,7 @@
 #	python27Packages.python-axolotl
 #	python27Packages.cryptography
 #	python27Packages.protobuf2_6
-	
+	speedcrunch	
 	qutebrowser
 	qemu
 	steam

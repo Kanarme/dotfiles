@@ -27,6 +27,7 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | rofi          | run dialog / dmenu    |
 | roxterm       | terminal emulator     |
 | shutter       | screenshot tool       |
+| speedcrunch   | calculator            |
 | trayer        | systray               |
 | xfe           | file manager          |
 | xmobar        | status bar            |
