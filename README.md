@@ -32,6 +32,37 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | xmobar        | status bar            |
 | xmonad        | tiling window manager |
 # Keybindings
+Every key must be pressed in combination with the super/win key.  
+For a deeper insight, check out the xmonad.hs file.  
+| Key             | Description                                        |
+| -------------   | :-------------:                                    |
+| d               | run dialog to start application                    |
+| c               | close current window                               |
+| f               | switch current window to fullscreen                |
+| enter           | spawn roxterm                                      |
+| 1               | switch to workspace 1                              |
+| 5               | switch to workspace 2                              |
+| shift_1         | move current window to workspace 1                 |
+| shift_5         | move current window to workspace 5                 |
+| shift_j         | change current focus forward                       |
+| shift_k         | change current focus backward                      |
+| shift_h         | change current workspace backward                  |
+| shift_l         | change current workspace forward                   |
+| x               | toogle xmobar                                      |
+| .               | resize current window to the right                 |
+| ,               | resize current window to the right                 |
+| a               | resize current window up                           |
+| z               | resize current window downward                     |
+| shift_semicolon | switch arrangement                                 |
+| -               | switch arrangement                                 |
+| arrow keys      | switch                                             |
+| g               | search a window and focus into the window          |
+| b               | search a window and bring to the current workspace |
+| e               | spawn xfe                                          |
+| p               | toogle toupad                                      |
+| t               | floating window back into tilling                  |
+  
+Note: You can press super/win key and move a window around in floating mode.  
 # Install
 **You have to look at the configuration and adjust it for your needs. If you have questions, feel free to ask.**  
 The script will ask you for your home direcoty and move the dofiles there. Following it will ask you which files you want to hardlink.  
