@@ -26,7 +26,7 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | redshift      | color temperature     |
 | rofi          | run dialog / dmenu    |
 | roxterm       | terminal emulator     |
-| shuttr        | screenshot tool       |
+| shutter       | screenshot tool       |
 | trayer        | systray               |
 | xfe           | file manager          |
 | xmobar        | status bar            |
