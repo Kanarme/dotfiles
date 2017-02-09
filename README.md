@@ -21,7 +21,7 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | beancount     | ledger                |
 | emacs         | text editor           |
 | mirage        | image viewer          |
-| nm appleint   | network manager       |
+| nm applet     | network manager       |
 | qutebrowser   | browser vim-like      |
 | redshift      | color temperature     |
 | rofi          | run dialog / dmenu    |
@@ -69,7 +69,7 @@ The script will ask you for your home direcoty and move the dofiles there. Follo
 #### <a> 1. Clone the repository:</a>
 
 ```sh
-git clone https://github.com/Kanarme/dotfiles.git
+git clone https://github.com/mscheuren/dotfiles.git
 ```
 #### <a> 2. Run the install.sh script:</a>
 If you want to install Nixos, you have to run the script as root.
