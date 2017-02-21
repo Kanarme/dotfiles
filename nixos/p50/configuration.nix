@@ -26,6 +26,7 @@ htop
 libreoffice
 lxappearance
 neovim
+openvpn
 roxterm
 screenfetch
 seafile-client
@@ -153,7 +154,7 @@ aspellDicts.en
  
          # SSH
          services.openssh.enable = true;
-         
+
 	 # SWAP
 	 swapDevices = [{
 	 device = "/var/cache/swap/swap0";
