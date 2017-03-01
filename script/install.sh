@@ -45,10 +45,10 @@ do
                     echo "Installing Dotfiels for P50"
                     echo "---------------------------"
                     echo "link configuration.nix to /etc/nixos/"
-                    ln $HOMEDIR/.dotfiles/nixos/p50/configuration.nix /etc/nixos/configuration.nix
+                    ln -f $HOMEDIR/.dotfiles/nixos/p50/configuration.nix /etc/nixos/configuration.nix
                     mkdir $HOMEDIR/.nixpkgs
                     echo "link config.nix to ~/.nixpkgs/config.nix"
-                    ln $HOMEDIR/.dotfiles/nixos/p50/config.nix $HOMEDIR/.nixpkgs/config.nix
+                    ln -f $HOMEDIR/.dotfiles/nixos/p50/config.nix $HOMEDIR/.nixpkgs/config.nix
                     chown -R root:root /etc/nixos
                     echo "---------------------------"
                     echo "---------------------------"
@@ -76,7 +76,7 @@ case $doit in
     y|Y)
         echo "Link Xmonad Dotfiles"
         mkdir $HOMEDIR/.xmonad
-        ln $HOMEDIR/.dotfiles/xmonad/xmonad.hs $HOMEDIR/.xmonad/xmonad.hs
+        ln -f $HOMEDIR/.dotfiles/xmonad/xmonad.hs $HOMEDIR/.xmonad/xmonad.hs
 
         PS3='Please select for which Device you want to install Xmobar: '
         options=("P50" "Quit")
@@ -87,7 +87,7 @@ case $doit in
                     echo "Installing dotfiels for P50"
                     echo "------------ Xmonad ---------------"
                     perl -p -i.bak -e "~s|/home/user|"$HOMEDIR"|" $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc
-                    ln $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc $HOMEDIR/.xmonad/xmobarrc
+                    ln -f $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc $HOMEDIR/.xmonad/xmobarrc
                     break
                     ;;
                 "Quit")
@@ -123,7 +123,7 @@ case $doit in
         rm ~/.emacs
         git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
         echo "link spacemacs configfile to ~/.spacemacs"
-        ln $HOMEDIR/.dotfiles/.spacemacs ~/.spacemacs
+        ln -f $HOMEDIR/.dotfiles/.spacemacs ~/.spacemacs
         echo -e
         ;;
     n|N)
