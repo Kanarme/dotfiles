@@ -133,12 +133,12 @@ case $doit in
         ;;
   *) echo invalid option ;;
 esac
-chmod 750 $HOMEDIR/.ditfiles/script/brightness_dec.sh
-chmod 750 $HOMEDIR/.ditfiles/script/brightness_inc.sh
-chmod 750 $HOMEDIR/.ditfiles/script/webdav.sh
-chown root:users $HOMEDIR/.ditfiles/script/brightness_dec.sh
-chown root:users $HOMEDIR/.ditfiles/script/brightness_inc.sh
-chown root:users $HOMEDIR/.ditfiles/script/webdav.sh
+chmod 750 $HOMEDIR/.dotfiles/script/brightness_dec.sh
+chmod 750 $HOMEDIR/.dotfiles/script/brightness_inc.sh
+chmod 750 $HOMEDIR/.dotfiles/script/webdav.sh
+chown root:users $HOMEDIR/.dotfiles/script/brightness_dec.sh
+chown root:users $HOMEDIR/.dotfiles/script/brightness_inc.sh
+chown root:users $HOMEDIR/.dotfiles/script/webdav.sh
 
 echo -e "${RED}Attention:${NC} Installation completed ${RED}!!!${NC}"
 echo -e "${RED}Attention:${NC} You may need to change the rights and owner of the home directory ${RED}!!!${NC}"
