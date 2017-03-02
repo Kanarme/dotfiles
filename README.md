@@ -3,7 +3,7 @@
 
 - [Introduction](#introduction)
 - [Screenshot](#screenshot)
-- [Programms](#programms)
+- [Programs](#programs)
 - [Keybindings](#keybindings)
 - [Install](#install)
 - [License](#license)
@@ -52,7 +52,7 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | ,               | resize current window to the right                 |
 | a               | resize current window up                           |
 | z               | resize current window downward                     |
-| :               | switch arrangement                                 |
+| shift_;         | switch arrangement                                 |
 | -               | switch arrangement                                 |
 | g               | search a window and focus into the window          |
 | b               | search a window and bring to the current workspace |
