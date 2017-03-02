@@ -16,11 +16,11 @@
 #	python27Packages.python-axolotl
 #	python27Packages.cryptography
 #	python27Packages.protobuf2_6
+	sc-im
 	speedcrunch	
 	qutebrowser
 	qemu
 	steam
-	qemu
 	virtmanager
 	vlc
 	xarchiver
