@@ -123,7 +123,7 @@ case $doit in
     y|Y)
         echo "Installing Spacemacs"
         rm ~/.emacs
-        git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+        git clone https://github.com/syl20bnr/spacemacs $HOMEDIR/.emacs.d
         echo "link spacemacs configfile to ~/.spacemacs"
         ln -f $HOMEDIR/.dotfiles/.spacemacs ~/.spacemacs
         echo -e
