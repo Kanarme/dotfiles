@@ -8,7 +8,9 @@
  nixpkgs.config.allowUnfree = true;
  environment.systemPackages = with pkgs; [
 # Apperence
-gnome3.adwaita-icon-theme
+arc-gtk-theme
+arc-icon-theme
+#gnome3.adwaita-icon-theme
 gnome3.gnome_themes_standard
 gtk_engines
 gtk-engine-murrine
@@ -93,6 +95,9 @@ aspellDicts.en
          desktopManager.xterm.enable = false;
          displayManager.auto.enable = true;
          displayManager.auto.user = "user";
+
+	 # Multiple monitor
+	 # xrandrHeads = [ "HDMI-0" "DVI-I-1" ];
  };
 
  services.openssh.forwardX11 = true;
@@ -101,7 +106,15 @@ aspellDicts.en
  ####################################################################################################################################################################
  # Gerneral config
   
- 	 # Time
+ 	 # Kernel
+	 # boot.kernelPackages = pkgs.linuxPackages_latest; #_4_9; #_latest;
+	 
+	 # System Language
+	 i18n = {
+        	defaultLocale = "en_US.UTF-8";
+	 };
+
+	 # Time
   	 time.timeZone = "Europe/Berlin";
   	 
 	 # Mount
@@ -163,7 +176,7 @@ aspellDicts.en
 
 	 # Clean up
 	 nix.gc.automatic = true;
-	 nix.gc.dates = "03:14";
+	 nix.gc.dates = "16:14";
 	 nix.gc.options = "--delete-older-than 30d";
 	 nix.extraOptions = 
 	 ''
@@ -171,6 +184,12 @@ aspellDicts.en
 	 gc-keep-derivations = true
 	 auto-optimise-stor = true
 	 '';
+
+	 # boot.cleanTmpDir = true;
+
+	 # Search
+	 # services.locate.enable = true;
+	 # services.locate.period = "00 15 * * *";
 
  ####################################################################################################################################################################
  # Users
@@ -183,7 +202,10 @@ aspellDicts.en
  };
  
  ####################################################################################################################################################################
- # Version
+ # Channel
+ system.autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable"; 
+ # Channel List https://nixos.org/channels/
+ # Config Version
  system.stateVersion = "16.09";
  
  ####################################################################################################################################################################

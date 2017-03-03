@@ -17,6 +17,8 @@ echo -e "${RED}Attention:${NC} Input is not checked${RED}!!!${NC}"
 echo "Example (/home/user)"
 read -p "Enter the path to Home: " HOMEDIR
 echo $HOMEDIR
+USERNAME=${HOMEDIR##*/}
+echo $USERNAME
 if [ "$EUID" -e 0 ]
 then mkdir $HOMEDIR
      exit
@@ -121,7 +123,7 @@ case $doit in
     y|Y)
         echo "Installing Spacemacs"
         rm ~/.emacs
-        git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+        git clone https://github.com/syl20bnr/spacemacs $HOMEDIR/.emacs.d
         echo "link spacemacs configfile to ~/.spacemacs"
         ln -f $HOMEDIR/.dotfiles/.spacemacs ~/.spacemacs
         echo -e
@@ -133,6 +135,8 @@ case $doit in
         ;;
   *) echo invalid option ;;
 esac
+chown -R $USERNAME:users $HOMEDIR
+
 chmod 750 $HOMEDIR/.dotfiles/script/brightness_dec.sh
 chmod 750 $HOMEDIR/.dotfiles/script/brightness_inc.sh
 chmod 750 $HOMEDIR/.dotfiles/script/webdav.sh
@@ -142,4 +146,4 @@ chown root:users $HOMEDIR/.dotfiles/script/webdav.sh
 
 echo -e "${RED}Attention:${NC} Installation completed ${RED}!!!${NC}"
 echo -e "${RED}Attention:${NC} You may need to change the rights and owner of the home directory ${RED}!!!${NC}"
-echo -e "chown -R user:users /home/user"
+# echo -e "chown -R user:users /home/user"
