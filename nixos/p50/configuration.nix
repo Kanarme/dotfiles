@@ -20,15 +20,16 @@ tango-icon-theme
 rofi
 trayer
 xorg.xrandr
-xscreensaver
 
 # Software
+i3lock
 gparted
 htop
 libreoffice
 lxappearance
 neovim
 openvpn
+pcmanfm
 roxterm
 screenfetch
 seafile-client
@@ -44,10 +45,12 @@ busybox
 curl
 davfs2
 exfat
+fam
 ghc     
 git
 jdk
 shared_mime_info
+lxmenu-data
 networkmanagerapplet
 ntfs3g
 pciutils     
@@ -93,14 +96,23 @@ aspellDicts.en
          windowManager.default = "xmonad";
          windowManager.xmonad.enableContribAndExtras = true;
          desktopManager.xterm.enable = false;
-         displayManager.auto.enable = true;
-         displayManager.auto.user = "user";
+         #displayManager.auto.enable = true;
+         #displayManager.auto.user = "user";
+	 displayManager.sddm = {
+	 	enable = true;
+	 	autoLogin.enable = true;
+		autoLogin.user = "user";
+		autoNumlock = true;
+
+	 };
+
 
 	 # Multiple monitor
 	 # xrandrHeads = [ "HDMI-0" "DVI-I-1" ];
  };
 
- services.openssh.forwardX11 = true;
+services.gnome3.gvfs.enable = true;
+services.openssh.forwardX11 = true;
  #services.teamviewer.enable  = true;
  
  ####################################################################################################################################################################
@@ -198,7 +210,7 @@ aspellDicts.en
  users.extraUsers.user = {
          isNormalUser = true;
          home = "/home/user";
-         extraGroups = ["davfs2""wheel" "networkmanager" "libvirt" "libvirtd" "vboxusers"];
+         extraGroups = ["davfs2""wheel" "networkmanager" "vboxusers"];
  };
  
  ####################################################################################################################################################################
