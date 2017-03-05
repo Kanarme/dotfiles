@@ -76,10 +76,6 @@ EOF
 read -n1 -p "Install Xmonad Dotfiles [y,n]" doit
 case $doit in
     y|Y)
-        echo "Link Xmonad Dotfiles"
-        mkdir $HOMEDIR/.xmonad
-        ln -f $HOMEDIR/.dotfiles/xmonad/xmonad.hs $HOMEDIR/.xmonad/xmonad.hs
-
         PS3='Please select for which Device you want to install Xmobar: '
         options=("P50" "Quit")
         select opt in "${options[@]}"
@@ -88,8 +84,10 @@ case $doit in
                 "P50")
                     echo "Installing dotfiels for P50"
                     echo "------------ Xmonad ---------------"
-                    perl -p -i.bak -e "~s|/home/user|"$HOMEDIR"|" $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc
-                    ln -f $HOMEDIR/.dotfiles/xmonad/P50_xmobarrc $HOMEDIR/.xmonad/xmobarrc
+                    mkdir $HOMEDIR/.xmonad
+                    perl -p -i.bak -e "~s|/home/user|"$HOMEDIR"|" $HOMEDIR/.dotfiles/xmonad/P50/xmobarrc
+                    ln -f $HOMEDIR/.dotfiles/xmonad/P50/xmobarrc $HOMEDIR/.xmonad/xmobarrc
+                    ln -f $HOMEDIR/.dotfiles/xmonad/P50/xmonad.hs $HOMEDIR/.xmonad/xmonad.hs
                     break
                     ;;
                 "Quit")

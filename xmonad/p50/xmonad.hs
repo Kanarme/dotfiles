@@ -50,6 +50,7 @@ import XMonad.Prompt.Window            -- pops up a prompt with window names
 import XMonad.Util.EZConfig            -- removeKeys, additionalKeys
 import XMonad.Util.Run
 import XMonad.Util.Run(spawnPipe)      -- spawnPipe, hPutStrLn
+import XMonad.Hooks.SetWMName
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -152,7 +153,7 @@ main = do
        -- Toggle layout (Fullscreen mode)
        , ((modm                , xK_f      ), sendMessage NextLayout)
        -- Push floating window back into tilling
-	, ((modm		       , xK_t	   ), withFocused $ windows . W.sink)
+	, ((modm	       , xK_t	   ), withFocused $ windows . W.sink)
        -- Move the focused window
        , ((modm .|. controlMask, xK_Right  ), withFocused (keysMoveWindow (6,0)))
        , ((modm .|. controlMask, xK_Left   ), withFocused (keysMoveWindow (-6,0)))
@@ -227,7 +228,7 @@ main = do
        , ((modm                    , xK_q      ), spawn "qutebrowser")
        -- Launch dmenu for launching applicatiton
        --, ((modm                    , xK_d      ), spawn "dmenu_run")--"exe=`dmenu_run -l 10 -fn 'Migu1M:size=20'` && exec $exe")
-       , ((modm                    , xK_d      ), spawn "rofi -show run -color-window '#000000, #000000,#000000' -color-normal '#000000, #aaaaaa, #000000, #145f9d, #aaaaaa' -color-active '#000000, #aaaaaa, #000000, #145f9d, #eeeeee' -color-urgent '#000000, #aaaaaa, #000000, #145f9d, #aaaaaa' -hide-scrollbar -location 2")
+       , ((modm                    , xK_d      ), spawn "rofi -show drun -color-window '#000000, #000000,#000000' -color-normal '#000000, #aaaaaa, #000000, #145f9d, #aaaaaa' -color-active '#000000, #aaaaaa, #000000, #145f9d, #eeeeee' -color-urgent '#000000, #aaaaaa, #000000, #145f9d, #aaaaaa' -hide-scrollbar -location 2")
        -- Play / Pause media keys
        , ((0                       , 0x1008ff18), spawn "sh $HOME/bin/cplay.sh")
        , ((0                       , 0x1008ff14), spawn "sh $HOME/bin/cplay.sh")
@@ -240,8 +241,8 @@ main = do
        -- Brightness Keys
        --, ((0                       , 0x1008FF03), spawn "xbrightness -5000")
        --, ((0                       , 0x1008FF02), spawn "xbrightness +5000")
-       , ((0                       , 0x1008FF02), spawn "sudo $HOME/.dotfiles/script/brightness_inc.sh")
-       , ((0                       , 0x1008FF03), spawn "sudo $HOME/.dotfiles/script/brightness_dec.sh")
+       , ((0                       , 0x1008FF02), spawn "light -A 5")
+       , ((0                       , 0x1008FF03), spawn "light -U 5")
        -- Take a screenshot (whole window)
        , ((0                       , 0xff61    ), spawn "sh $HOME/bin/screenshot.sh")
        -- Take a screenshot (selected area)
@@ -267,6 +268,7 @@ myStartupHook = do
 	spawn "/bin/sh $HOME/.dotfiles/script/startup.sh"
 	spawn "nm-applet"
 	spawn "sudo $HOME/.dotfiles/script/webdav.sh"
+	setWMName "LG3D" 
 --------------------------------------------------------------------------- }}}
 -- myManageHookShift: some window must created there                        {{{
 -------------------------------------------------------------------------------
