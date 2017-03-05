@@ -5,73 +5,79 @@
  imports = [./hardware-configuration.nix];
  ####################################################################################################################################################################
  # Packages
- nixpkgs.config.allowUnfree = true;
- environment.systemPackages = with pkgs; [
-# Apperence
-arc-gtk-theme
-arc-icon-theme
-#gnome3.adwaita-icon-theme
-gnome3.gnome_themes_standard
-gtk_engines
-gtk-engine-murrine
-haskellPackages.xmobar
-haskellPackages.xmonad
-tango-icon-theme
-rofi
-trayer
-xorg.xrandr
+ nixpkgs.config = {
+ 	allowUnfree = true;
+	};
+};
+environment.systemPackages = with pkgs; [
 
-# Software
-i3lock
-gparted
-htop
-libreoffice
-lxappearance
-neovim
-openvpn
-pcmanfm
-roxterm
-screenfetch
-seafile-client
-shutter
-thunderbird
-xfe
-zathura  # PDF Viewer
-
-# System
-arandr
-bashmount
-busybox
-curl
-davfs2
-exfat
-fam
-ghc     
-git
-jdk
-shared_mime_info
-lxmenu-data
-networkmanagerapplet
-ntfs3g
-pciutils     
-#python27Packages.pip
-python
-python27Packages.pip
-python27Packages.setuptools
-python3
-python35Packages.pip
-python35Packages.setuptools
-unrar
-unzip
-xbrightness
-xorg.libXt
-xorg.libXtst
-
-# Writing
-aspell
-aspellDicts.de
-aspellDicts.en
-# texlive.combined.scheme-full
+	# Apperence
+	arc-gtk-theme
+	arc-icon-theme
+	gnome3.gnome_themes_standard
+	gtk_engines
+	gtk-engine-murrine
+	haskellPackages.xmobar
+	haskellPackages.xmonad
+	tango-icon-theme
+	rofi
+	trayer
+	xorg.xrandr
+	
+	# Software
+	i3lock
+	gparted
+	htop
+	libreoffice
+	lxappearance
+	neovim
+	openvpn
+	pcmanfm
+	roxterm
+	screenfetch
+	seafile-client
+	shutter
+	thunderbird
+	xfe
+	zathura  # PDF Viewer
+	zotero
+	jabref
+	
+	# System
+	arandr
+	bashmount
+	busybox
+	curl
+	davfs2
+	exfat
+	fam
+	ghc     
+	git
+	jdk
+	jre
+	shared_mime_info
+	lxmenu-data
+	networkmanagerapplet
+	ntfs3g
+	pciutils     
+	#python27Packages.pip
+	python
+	python27Packages.pip
+	python27Packages.setuptools
+	python3
+	python35Packages.pip
+	python35Packages.setuptools
+	unrar
+	unzip
+	xbrightness
+	xorg.libXt
+	xorg.libXtst
+	
+	# Writing
+	aspell
+	aspellDicts.de
+	aspellDicts.en
+	# texlive.combined.scheme-full
 ];
 
       
@@ -96,14 +102,9 @@ aspellDicts.en
          windowManager.default = "xmonad";
          windowManager.xmonad.enableContribAndExtras = true;
          desktopManager.xterm.enable = false;
-         #displayManager.auto.enable = true;
-         #displayManager.auto.user = "user";
-	 displayManager.sddm = {
+	 displayManager.auto = {
 	 	enable = true;
-	 	autoLogin.enable = true;
-		autoLogin.user = "user";
-		autoNumlock = true;
-
+		user = "user";
 	 };
 
 
@@ -174,9 +175,27 @@ services.openssh.forwardX11 = true;
   	 };
          
          # ZSH
-         programs.zsh.enable = true;
+         programs.zsh = {
+	 	enable = true;
+		interactiveShellInit = ''
+      			export EDITOR=nvim
+      			
+			# Java
+      		 	export _JAVA_AWT_WM_NONREPARENTING=1
+      		'';
+		
+		shellAliases = {
+			ls="ls --color=auto";
+			l="ls -alh";
+      			ll="ls -alh";
+      			grep="grep -i --color=auto";
+    		};
+	 };
          users.defaultUserShell = "/run/current-system/sw/bin/zsh";
- 
+	 
+	 # light
+	 programs.light.enable = true;
+
          # SSH
          services.openssh.enable = true;
 
