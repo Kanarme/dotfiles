@@ -22,6 +22,7 @@ xscreensaver
 
 # Software
 firefox
+i3lock
 jabref
 jdk
 gparted
@@ -31,6 +32,7 @@ lxappearance
 mirage
 neovim
 openvpn
+pcmanfm
 roxterm
 screenfetch
 seafile-client
@@ -40,7 +42,6 @@ texmaker
 thunderbird
 vlc
 xarchiver
-xfe
 zathura  # PDF Viewer
 
 # System
@@ -53,7 +54,9 @@ exfat
 ghc     
 git
 jdk
+jre
 shared_mime_info
+lxmenu-data
 networkmanagerapplet
 ntfs3g
 pciutils     
@@ -97,8 +100,12 @@ texlive.combined.scheme-full
          windowManager.default = "xmonad";
          windowManager.xmonad.enableContribAndExtras = true;
          desktopManager.xterm.enable = false;
-         displayManager.auto.enable = true;
-         displayManager.auto.user = "sky";
+         displayManager.auto = {
+	 	enable = true;
+         	user = "sky";
+	};
+
+	xrandrHeads = [ "HDMI1" "eDP1"];
  };
  
  ####################################################################################################################################################################
@@ -111,14 +118,7 @@ texlive.combined.scheme-full
          i18n = {
                 defaultLocale = "de_DE.UTF-8";
          };
-
-
-	 security.sudo.extraConfig =
-	 ''
-  	 user ALL=(ALL) NOPASSWD: /home/user/.dotfiles/script/brightness_inc.sh
-  	 user ALL=(ALL) NOPASSWD: /home/user/.dotfiles/script/brightness_dec.sh
-	 '';
-
+ 
 	 # Redshift
 	 services.redshift = {
 	     enable = true;
@@ -142,12 +142,16 @@ texlive.combined.scheme-full
 	 # Printer
   	 services.printing = {
    	     enable = true;
+	     drivers = [ pkgs.hplip ];
   	 };
          
          # ZSH
          programs.zsh.enable = true;
          users.defaultUserShell = "/run/current-system/sw/bin/zsh";
- 
+
+	 # light
+	 programs.light.enable = true;
+
          # SSH
          services.openssh.enable = true;
 
@@ -185,7 +189,7 @@ texlive.combined.scheme-full
  ####################################################################################################################################################################
  # Bootloader
 
-  boot.loader.gummiboot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices = [
     { 
