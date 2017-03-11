@@ -10,7 +10,7 @@
 
 # Introduction
 
-This repository contains my dotfiles.
+This repository contains my dotfiles.  
 My Xmonad Config is heavly inspired by Shotaro Fujimoto.
 Highly recommended to take a look at his Github page <https://github.com/ssh0/dotfiles>
 # Screenshot
@@ -65,7 +65,13 @@ Note: You can press super/win key and move a window around in floating mode.
 # Install
 **You have to look at the configuration and adjust it for your needs. If you have questions, feel free to ask.**  
 The script will ask you for your home direcoty and move the dofiles there. Following it will ask you which files you want to hardlink.  
- 
+You can choose between:  
+| Device         | Description              |
+| ------         | -----                    |
+| Lenovo P50     | My Personal Notebook.    |
+| HP Probook 430 | Notebook of my girlfrind |
+
+
 #### <a> 1. Clone the repository:</a>
 
 ```sh
