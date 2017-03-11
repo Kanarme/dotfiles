@@ -6,11 +6,12 @@ allowUnfree = true;
                  name = "all";
                  paths = [
                        chromium
-	                     cmake
-	                     gajim
-	                     hakuneko
+	               cmake
+	               gajim
+	               hakuneko
                        mirage
-	                     mumble
+	               mpv
+		       mumble
                        perlPackages.ImageExifTool
                        # python27Packages.nbxmpp
                        # python27Packages.python-axolotl
