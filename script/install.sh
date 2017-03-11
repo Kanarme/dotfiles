@@ -35,7 +35,7 @@ cat <<"EOF"
 EOF
 echo "If you do not want to copy the configuration.nix file or do not use Nixos select Quit."
 PS3='Please select for which Device you want to install nixos: '
-options=("P50" "Quit")
+options=("P50" "HP_Pro_430" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -44,19 +44,38 @@ do
                        then echo "If you want to install Nixos, please run as root"
                        exit
                     fi
-                    echo "Installing Dotfiels for P50"
+                    DEVICE="p50"
+                    echo "Installing Dotfiels for "$DEVICE
                     echo "---------------------------"
                     echo "link configuration.nix to /etc/nixos/"
-                    ln -f $HOMEDIR/.dotfiles/nixos/p50/configuration.nix /etc/nixos/configuration.nix
+                    ln -f $HOMEDIR/.dotfiles/nixos/$DEVICE/configuration.nix /etc/nixos/configuration.nix
                     mkdir $HOMEDIR/.nixpkgs
                     echo "link config.nix to ~/.nixpkgs/config.nix"
-                    ln -f $HOMEDIR/.dotfiles/nixos/p50/config.nix $HOMEDIR/.nixpkgs/config.nix
+                    ln -f $HOMEDIR/.dotfiles/nixos/$DEVICE/config.nix $HOMEDIR/.nixpkgs/config.nix
                     chown -R root:root /etc/nixos
                     echo "---------------------------"
                     echo "---------------------------"
                     break
                     ;;
-                "Quit")
+                 "HP_Pro_430")
+                     if [ "$EUID" -ne 0 ]
+                     then echo "If you want to install Nixos, please run as root"
+                          exit
+                     fi
+                     DEVICE="HP_Pro_430"
+                     echo "Installing Dotfiels for "$DEVICE
+                     echo "---------------------------"
+                     echo "link configuration.nix to /etc/nixos/"
+                     ln -f $HOMEDIR/.dotfiles/nixos/$DEVICE/configuration.nix /etc/nixos/configuration.nix
+                     mkdir $HOMEDIR/.nixpkgs
+                     echo "link config.nix to ~/.nixpkgs/config.nix"
+                     ln -f $HOMEDIR/.dotfiles/nixos/$DEVICE/config.nix $HOMEDIR/.nixpkgs/config.nix
+                     chown -R root:root /etc/nixos
+                     echo "---------------------------"
+                     echo "---------------------------"
+                     break
+                    ;;
+                 "Quit")
                     echo "Without configuration.nix"
                     break
                     ;;
@@ -77,17 +96,28 @@ read -n1 -p "Install Xmonad Dotfiles [y,n]" doit
 case $doit in
     y|Y)
         PS3='Please select for which Device you want to install Xmobar: '
-        options=("P50" "Quit")
+        options=("P50" "HP_Pro_430" "Quit")
         select opt in "${options[@]}"
         do
             case $opt in
                 "P50")
-                    echo "Installing dotfiels for P50"
+                    $DEVICE="p50"
+                    echo "Installing dotfiels for "$DEVICE
                     echo "------------ Xmonad ---------------"
                     mkdir $HOMEDIR/.xmonad
                     perl -p -i.bak -e "~s|/home/user|"$HOMEDIR"|" $HOMEDIR/.dotfiles/xmonad/P50/xmobarrc
-                    ln -f $HOMEDIR/.dotfiles/xmonad/P50/xmobarrc $HOMEDIR/.xmonad/xmobarrc
-                    ln -f $HOMEDIR/.dotfiles/xmonad/P50/xmonad.hs $HOMEDIR/.xmonad/xmonad.hs
+                    ln -f $HOMEDIR/.dotfiles/xmonad/$DEVICE/xmobarrc $HOMEDIR/.xmonad/xmobarrc
+                    ln -f $HOMEDIR/.dotfiles/xmonad/$DEVICE/xmonad.hs $HOMEDIR/.xmonad/xmonad.hs
+                    break
+                    ;;
+                "HP_Pro_430")
+                    $DEVICE="HP_Pro_430"
+                    echo "Installing dotfiels for "$DEVICE
+                    echo "------------ Xmonad ---------------"
+                    mkdir $HOMEDIR/.xmonad
+                    perl -p -i.bak -e "~s|/home/user|"$HOMEDIR"|" $HOMEDIR/.dotfiles/xmonad/P50/xmobarrc
+                    ln -f $HOMEDIR/.dotfiles/xmonad/$DEVICE/xmobarrc $HOMEDIR/.xmonad/xmobarrc
+                    ln -f $HOMEDIR/.dotfiles/xmonad/$DEVICE/xmonad.hs $HOMEDIR/.xmonad/xmonad.hs
                     break
                     ;;
                 "Quit")
