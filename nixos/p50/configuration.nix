@@ -59,8 +59,8 @@ environment.systemPackages = with pkgs; [
 	lxmenu-data
 	networkmanagerapplet
 	ntfs3g
+	pasystray	
 	pciutils     
-	#python27Packages.pip
 	python
 	python27Packages.pip
 	python27Packages.setuptools
