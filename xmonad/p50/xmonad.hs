@@ -267,6 +267,7 @@ myLayout = tile ||| full
 myStartupHook = do
 	spawn "/bin/sh $HOME/.dotfiles/script/startup.sh"
 	spawn "nm-applet"
+        spawn "seafile-applet"
 	spawn "sudo $HOME/.dotfiles/script/webdav.sh"
 	setWMName "LG3D" 
 --------------------------------------------------------------------------- }}}
