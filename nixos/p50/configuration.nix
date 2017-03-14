@@ -7,8 +7,7 @@
  # Packages
  nixpkgs.config = {
  	allowUnfree = true;
-	};
-};
+ };
 environment.systemPackages = with pkgs; [
 
 	# Apperence
@@ -41,7 +40,6 @@ environment.systemPackages = with pkgs; [
 	xfe
 	zathura  # PDF Viewer
 	zotero
-	jabref
 	
 	# System
 	arandr
@@ -131,17 +129,15 @@ services.openssh.forwardX11 = true;
   	 time.timeZone = "Europe/Berlin";
   	 
 	 # Mount
-	 fileSystems."/oyra" = 
-	 {
-	 device = "https://cloud.oyra.eu/seafdav";
-   	 options = ["noauto,users,rw"];
-	 fsType = "davfs";
-	 };
+	 # fileSystems."/oyra" = 
+	 # {
+	 # device = "https://cloud.test.eu/seafdav";
+   	 # options = ["noauto,users,rw"];
+	 # fsType = "davfs";
+	 # };
 	 security.sudo.extraConfig =
 	 ''
   	 user ALL=(ALL) NOPASSWD: /home/user/.dotfiles/script/webdav.sh
-  	 user ALL=(ALL) NOPASSWD: /home/user/.dotfiles/script/brightness_inc.sh
-  	 user ALL=(ALL) NOPASSWD: /home/user/.dotfiles/script/brightness_dec.sh
 	 '';
 
 	 # Redshift
@@ -187,7 +183,6 @@ services.openssh.forwardX11 = true;
 		shellAliases = {
 			ls="ls --color=auto";
 			l="ls -alh";
-      			ll="ls -alh";
       			grep="grep -i --color=auto";
     		};
 	 };
