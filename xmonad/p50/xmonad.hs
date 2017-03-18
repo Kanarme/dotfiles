@@ -269,6 +269,7 @@ myStartupHook = do
 	spawn "nm-applet"
         spawn "seafile-applet"
 	spawn "sudo $HOME/.dotfiles/script/webdav.sh"
+        spawn "pasystray"
 	setWMName "LG3D" 
 --------------------------------------------------------------------------- }}}
 -- myManageHookShift: some window must created there                        {{{

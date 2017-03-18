@@ -269,6 +269,7 @@ myStartupHook = do
 	spawn "/bin/sh $HOME/.dotfiles/script/startup.sh"
 	spawn "nm-applet"
 	spawn "seafile-applet"
+        spawn "pasystray"
 	spawn "xrandr --output HDMI2 --off --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output eDP1 --mode 1366x768 --pos 1920x312 --rotate normal --output VIRTUAL1 --off"
 	setWMName "LG3D"
 --------------------------------------------------------------------------- }}}
