@@ -219,7 +219,7 @@ main = do
        `additionalKeys`
        [
        -- Lock screen
-         ((mod1Mask .|. controlMask, xK_l      ), spawn "xscreensaver-command -lock")
+         ((modm     .|. controlMask, xK_l      ), spawn "sh $HOME/.dotfiles/script/shutdown.sh")
        -- Launch terminal
        , ((modm                    , xK_Return ), spawn "roxterm --hide-menubar")
        -- Launch file manager

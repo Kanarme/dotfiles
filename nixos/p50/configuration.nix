@@ -53,6 +53,7 @@ environment.systemPackages = with pkgs; [
 	fam
 	ghc     
 	git
+	gxmessage
 	jdk
 	jre
 	shared_mime_info
