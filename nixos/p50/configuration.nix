@@ -37,6 +37,8 @@ environment.systemPackages = with pkgs; [
 	seafile-client
 	shutter
 	thunderbird
+	tig
+	tldr
 	xfe
 	zathura  # PDF Viewer
 	zotero
