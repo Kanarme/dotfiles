@@ -27,6 +27,7 @@ environment.systemPackages = with pkgs; [
 	i3lock
 	gparted
 	htop
+	keepass
 	libreoffice
 	lxappearance
 	neovim
@@ -41,7 +42,6 @@ environment.systemPackages = with pkgs; [
 	tldr
 	xfe
 	zathura  # PDF Viewer
-	zotero
 	
 	# System
 	arandr
@@ -71,6 +71,7 @@ environment.systemPackages = with pkgs; [
 	unrar
 	unzip
 	xbrightness
+	xdotool
 	xorg.libXt
 	xorg.libXtst
 	
