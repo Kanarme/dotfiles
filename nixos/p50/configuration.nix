@@ -172,6 +172,7 @@ services.openssh.forwardX11 = true;
 	 # Printer
   	 services.printing = {
    	     enable = true;
+	     drivers = [ pkgs.samsungUnifiedLinuxDriver ];
   	 };
          
          # ZSH
