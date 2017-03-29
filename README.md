@@ -31,7 +31,7 @@ Highly recommended to take a look at his Github page <https://github.com/ssh0/do
 | tig           | git interface         |
 | tldr          | simplified man pages  |
 | trayer        | systray               |
-| xfe           | file manager          |
+| pcmanfm       | file manager          |
 | xmobar        | status bar            |
 | xmonad        | tiling window manager |
 # Keybindings

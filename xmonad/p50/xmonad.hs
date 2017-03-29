@@ -223,7 +223,7 @@ main = do
        -- Launch terminal
        , ((modm                    , xK_Return ), spawn "roxterm --hide-menubar")
        -- Launch file manager
-       , ((modm                    , xK_e      ), spawn "xfe")
+       , ((modm                    , xK_e      ), spawn "pcmanfm")
        -- Launch web browser
        , ((modm                    , xK_q      ), spawn "qutebrowser")
        -- Launch dmenu for launching applicatiton
