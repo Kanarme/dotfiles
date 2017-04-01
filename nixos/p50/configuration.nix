@@ -11,7 +11,7 @@
 environment.systemPackages = with pkgs; [
 
 	# Apperence
-	arc-gtk-theme
+	arc-theme
 	arc-icon-theme
 	gnome3.gnome_themes_standard
 	gtk_engines
@@ -24,23 +24,31 @@ environment.systemPackages = with pkgs; [
 	xorg.xrandr
 	
 	# Software
-	i3lock
+	beancount
+	calibre
+	colordiff
+	fava
 	gparted
 	htop
+	i3lock
 	keepass
+	less
 	libreoffice
 	lxappearance
 	neovim
 	openvpn
+	pavucontrol
 	pcmanfm
 	roxterm
 	screenfetch
 	seafile-client
 	shutter
+	ssvnc
+	taskwarrior
 	thunderbird
 	tig
 	tldr
-	xfe
+	x11vnc
 	zathura  # PDF Viewer
 	
 	# System
@@ -60,6 +68,7 @@ environment.systemPackages = with pkgs; [
 	lxmenu-data
 	networkmanagerapplet
 	ntfs3g
+	numlockx
 	pasystray	
 	pciutils     
 	python
@@ -219,8 +228,8 @@ services.openssh.forwardX11 = true;
 	 # boot.cleanTmpDir = true;
 
 	 # Search
-	 # services.locate.enable = true;
-	 # services.locate.period = "00 15 * * *";
+	 services.locate.enable = true;
+	 services.locate.interval = "10 * * * *";
 
  ####################################################################################################################################################################
  # Users
@@ -234,10 +243,10 @@ services.openssh.forwardX11 = true;
  
  ####################################################################################################################################################################
  # Channel
- system.autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable"; 
+ # system.autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable"; 
  # Channel List https://nixos.org/channels/
  # Config Version
- system.stateVersion = "16.09";
+ system.stateVersion = "17.03";
  
  ####################################################################################################################################################################
  # Bootloader

@@ -25,7 +25,6 @@ allowUnfree = true;
                        virtmanager
                        vlc
                        xarchiver
-                       xfce.thunar
                        mylatex
                        myemacs
                  ];

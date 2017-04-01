@@ -27,7 +27,7 @@ import XMonad.Actions.WindowGo
 import XMonad.Hooks.DynamicLog         -- for xmobar
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeWindows
-import XMonad.Hooks.ManageDocks        -- avoid xmobar area
+import XMonad.Hooks.ManageDocks   (ToggleStruts(..),avoidStruts,docks,manageDocks)
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.Place
 import XMonad.Layout
@@ -108,8 +108,8 @@ strippedKeys x = foldr M.delete (keys defaultConfig x) (keysToRemove x)
 main :: IO ()
 
 main = do
-    wsbar <- spawnPipe myWsBar
-    xmonad $ ewmh defaultConfig
+  wsbar <- spawnPipe myWsBar
+  xmonad $ docks defaultConfig
        { borderWidth        = borderwidth
        , terminal           = "roxterm"
        , focusFollowsMouse  = True
@@ -270,6 +270,7 @@ myStartupHook = do
         spawn "seafile-applet"
 	spawn "sudo $HOME/.dotfiles/script/webdav.sh"
         spawn "pasystray"
+        spawn "numlockx"
 	setWMName "LG3D" 
 --------------------------------------------------------------------------- }}}
 -- myManageHookShift: some window must created there                        {{{
