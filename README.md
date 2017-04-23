@@ -19,7 +19,7 @@ This repository contains my dotfiles.
 Since 2017.04.17 I use bspwm instead Xmonad.
 # bspwm
 ## Screenshot
-![screenshot1.jpg](./screenshot/screenshot1/jpg)
+![screenshot1.png](./screenshot/screenshot1.png)
 ## Programs
 | Programm      | Category               |
 | ------------- | :-------------:        |
