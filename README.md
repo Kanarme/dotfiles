@@ -15,7 +15,7 @@
 
 # Introduction
 
-This repository contains my dotfiles. 
+This repository contains my dotfiles.  
 Since 2017.04.17 I use bspwm instead Xmonad.
 # bspwm
 ## Screenshot
