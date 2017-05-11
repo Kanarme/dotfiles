@@ -45,9 +45,16 @@ values."
       auto-completion-enable-help-tooltip 'manual
       :disabled-for erc)
      c-c++
+     (elfeed :variables rmh-elfeed-org-files (list "~/.dotfiles/spacemacs/elfeed.org")) ;; SPC a f
      git ;; SPC g s
+     html
      (ibuffer :variables ibuffer-group-buffers-by nil) ;; SPC b B
-     org
+     latex
+     nixos
+     (org :variables
+          org-enable-github-support t
+          org-enable-reveal-js-support t
+          )
      ranger ;; SPC a r
      (shell :variables shell-default-shell 'eshell) ;; SPC '
      (syntax-checking :variables syntax-checking-enable-by-default nil)
@@ -144,7 +151,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox spacemacs-dark)
+   dotspacemacs-themes '(monokai)
+   ;;dotspacemacs-themes '(gruvbox)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -322,7 +330,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Evil
   evil-shift-round nil
   )
-
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -335,6 +342,49 @@ you should place your code here."
   (require 'beancount)
   (add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode))
 
+  ;; Latex
+  (progn (setq TeX-view-program-selection '((output-pdf "Zathura"))))
+
+  ;; Org
+ ;; (org-babel-do-load-languages
+ ;;  'org-babel-load-languages
+ ;;  '(;;(c . t)
+ ;;    (c++ . t)
+ ;;    (latex . t)
+ ;;    (shell . t)
+ ;;    ))
+  ;; Org
+  (with-eval-after-load 'org
+
+    ;; Org Agenda
+    (setq org-agenda-files (quote ("~/org/")))
+
+    ;; Avoid setting entries as DONE when there are still sub-entries that are not DONE
+    (setq org-enforce-todo-dependencies t)
+
+
+    ;; Allow to iterate easily between todo-keywords using meta->/meta-<
+    (setq org-use-fast-todo-selection t)
+    (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+
+    ;; Custom State Keywords
+    (setq org-todo-keywords
+          (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+                  (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+
+    ;; Custom colors for the keywords
+    (setq org-todo-keyword-faces
+          (quote (("NEXT" :foreground "blue" :weight bold)
+                  ("WAITING" :foreground "orange" :weight bold)
+                  ("HOLD" :foreground "magenta" :weight bold)
+                  ("CANCELLED" :foreground "forest green" :weight bold)
+                  ("MEETING" :foreground "forest green" :weight bold)
+                  ("PHONE" :foreground "forest green" :weight bold))))
+
+    ;; Reveal
+    ;;(setq org-reveal-root "~/src/reveal.js")
+    (setq org-reveal-root "file:/home/user/src/reveal.js")
+  )
   ;; Spaceline
   (setq powerline-default-separator 'arrow
         spaceline-buffer-encoding-abbrev-p nil
@@ -343,19 +393,18 @@ you should place your code here."
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(package-selected-packages
    (quote
-    (ledger-mode flycheck-ledger disaster company-c-headers cmake-mode clang-format xterm-color smeargle shell-pop ranger orgit org-projectile org-present org-pomodoro flycheck-pos-tip flycheck company-quickhelp pos-tip fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy))))
+    (spinner hydra parent-mode helm-core haml-mode flx magit magit-popup with-editor smartparens iedit anzu evil goto-chg undo-tree highlight simple-httpd org-plus-contrib ace-jump-mode noflet powerline popwin elfeed f s diminish projectile pkg-info epl counsel swiper ivy web-completion-data pos-tip nixos-options company bind-map bind-key yasnippet packed dash auctex async avy auto-complete popup alert log4e gntp flycheck helm git-commit helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-ag ace-jump-helm-line xterm-color ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request ranger rainbow-delimiters pug-mode persp-mode pcre2el paradox ox-reveal ox-gfm orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file nix-mode neotree multi-term move-text monokai-theme magit-gitflow macrostep lorem-ipsum linum-relative link-hint less-css-mode ivy-hydra info+ indent-guide ibuffer-projectile hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump disaster define-word counsel-projectile company-web company-statistics company-quickhelp company-nixos-options company-c-headers company-auctex column-enforce-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C")))))
